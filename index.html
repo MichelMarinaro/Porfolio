@@ -1123,8 +1123,12 @@ function toggleChat() {
   chatOpen = !chatOpen;
   const win = document.getElementById('chat-window');
   const tip = document.getElementById('chat-tooltip');
+  const bubble = document.getElementById('chat-bubble');
   win.classList.toggle('open', chatOpen);
   if (tip) tip.style.display = 'none';
+  
+  // Nascondi il bottone cerchio quando la chat è aperta (soprattutto su mobile)
+  if (bubble) bubble.style.display = chatOpen ? 'none' : 'flex';
   
   const n = document.querySelector('.chat-notif');
   if (n) { n.style.display = 'none'; n.classList.remove('pulse'); }
